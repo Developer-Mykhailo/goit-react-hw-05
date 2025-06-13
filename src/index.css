@@ -1,0 +1,22 @@
+@import "modern-normalize/modern-normalize.css";
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
