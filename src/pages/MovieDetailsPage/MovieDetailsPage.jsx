@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { getMovieByIdAPI } from "../../service/moviedbAPI";
 import Container from "../../components/Container/Container";
 import s from "./MovieDetailsPage.module.css";
@@ -50,6 +50,16 @@ const MovieDetailsPage = () => {
           <p>{genres?.map((genre) => genre.name).join(" ")}</p>
         </div>
       </div>
+
+      <ul>
+        <li>
+          <Link to={"cast"}>Cast</Link>
+        </li>
+        <li>
+          <Link to={"reviews"}>Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </Container>
   );
 };

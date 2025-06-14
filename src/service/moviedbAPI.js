@@ -21,3 +21,11 @@ export const getMovieByIdAPI = async (id) => {
   });
   return data;
 };
+
+//---------------------------------------------------------------
+export const getMovieCreditsAPI = async (id) => {
+  const { data } = await axios.get(`movie/${id}/credits`, {
+    params: { language: "en-US" },
+  });
+  return data;
+};
