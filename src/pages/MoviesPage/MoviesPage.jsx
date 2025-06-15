@@ -46,7 +46,7 @@ const MoviesPage = () => {
           ))}
         </ul>
       ) : (
-        <p>Type somthing</p>
+        <p>Type something</p>
       )}
     </Container>
   );

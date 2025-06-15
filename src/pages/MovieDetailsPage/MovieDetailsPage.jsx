@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import { getMovieDataByTypeAPI } from "../../service/moviedbAPI";
 import Container from "../../components/Container/Container";
 import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
+  const navigate = useNavigate();
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
-  const { poster_path, title, overview, genres, vote_average, release_date } =
-    movie;
 
   //
   useEffect(() => {
@@ -19,11 +18,15 @@ const MovieDetailsPage = () => {
         setMovie(movieObj);
       } catch (error) {
         console.log(error);
+        navigate("/notfound");
       }
     };
 
     getMovieById();
-  }, [movieId]);
+  }, [movieId, navigate]);
+
+  const { poster_path, title, overview, genres, vote_average, release_date } =
+    movie;
 
   return (
     <Container>

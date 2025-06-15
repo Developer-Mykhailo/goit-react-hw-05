@@ -27,7 +27,7 @@ export const getMovieDataByTypeAPI = async (id, type = "") => {
     });
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 };
 
@@ -42,7 +42,6 @@ export const getMovieByQueryAPI = async (query) => {
     });
     return data;
   } catch (error) {
-    console.log("Search error:", error);
-    return null;
+    throw new Error(error);
   }
 };
