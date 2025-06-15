@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
-import { getMovieDataByType } from "../../service/moviedbAPI";
+import { getMovieDataByTypeAPI } from "../../service/moviedbAPI";
 import Container from "../../components/Container/Container";
 import s from "./MovieDetailsPage.module.css";
 
@@ -14,7 +14,7 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const getMovieById = async () => {
       try {
-        const movieObj = await getMovieDataByType(movieId);
+        const movieObj = await getMovieDataByTypeAPI(movieId);
 
         setMovie(movieObj);
       } catch (error) {

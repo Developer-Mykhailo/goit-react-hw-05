@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieDataByType } from "../../service/moviedbAPI";
+import { getMovieDataByTypeAPI } from "../../service/moviedbAPI";
 import s from "./MovieReviews.module.css";
 
 const MovieReviews = () => {
@@ -11,7 +11,7 @@ const MovieReviews = () => {
   useEffect(() => {
     const getMovieReviews = async () => {
       try {
-        const { results } = await getMovieDataByType(movieId, "reviews");
+        const { results } = await getMovieDataByTypeAPI(movieId, "reviews");
         setReviews(results);
       } catch (error) {
         console.log(error);

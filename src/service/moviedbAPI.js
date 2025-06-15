@@ -12,17 +12,15 @@ export const getMovieAPI = async () => {
     const { data } = await axios.get("trending/movie/day", {
       params: { language: "en-US" },
     });
-
     return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-//---------------------------------------------------------------
-export const getMovieDataByType = async (id, type = "") => {
+//-------------------- cast | reviews ----------------------
+export const getMovieDataByTypeAPI = async (id, type = "") => {
   const url = type ? `movie/${id}/${type}` : `movie/${id}`;
-
   try {
     const { data } = await axios.get(url, {
       params: { language: "en-US" },
@@ -30,5 +28,21 @@ export const getMovieDataByType = async (id, type = "") => {
     return data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+//------------------------- query ---------------------------
+export const getMovieByQueryAPI = async (query) => {
+  try {
+    const { data } = await axios.get("search/movie", {
+      params: {
+        language: "en-US",
+        query,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log("Search error:", error);
+    return null;
   }
 };
