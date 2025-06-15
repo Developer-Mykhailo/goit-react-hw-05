@@ -12,7 +12,6 @@ const MovieCast = () => {
       try {
         const { cast } = await getMovieCreditsAPI(movieId);
         setCredits(cast);
-        console.log(cast);
       } catch (error) {
         console.log(error);
       }

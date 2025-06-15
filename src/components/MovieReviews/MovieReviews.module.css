@@ -1,0 +1,11 @@
+.reviews_list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.author {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
