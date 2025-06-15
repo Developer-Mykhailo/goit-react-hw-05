@@ -1,8 +1,6 @@
-// import s from "./MovieReviews.module.css";
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieReviewsAPI } from "../../service/moviedbAPI";
+import { getMovieDataByType } from "../../service/moviedbAPI";
 import s from "./MovieReviews.module.css";
 
 const MovieReviews = () => {
@@ -13,7 +11,7 @@ const MovieReviews = () => {
   useEffect(() => {
     const getMovieReviews = async () => {
       try {
-        const { results } = await getMovieReviewsAPI(movieId);
+        const { results } = await getMovieDataByType(movieId, "reviews");
         setReviews(results);
       } catch (error) {
         console.log(error);

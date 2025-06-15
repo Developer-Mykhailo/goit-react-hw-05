@@ -10,6 +10,7 @@ const HomePage = () => {
     const getMovie = async () => {
       try {
         const { results } = await getMovieAPI();
+
         setMovies(results);
       } catch (error) {
         console.log(error);

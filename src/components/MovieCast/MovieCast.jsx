@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMovieCreditsAPI } from "../../service/moviedbAPI";
+import { getMovieDataByType } from "../../service/moviedbAPI";
 import { useParams } from "react-router-dom";
 import s from "./MovieCast.module.css";
 
@@ -10,7 +10,8 @@ const MovieCast = () => {
   useEffect(() => {
     const getMovieCredits = async () => {
       try {
-        const { cast } = await getMovieCreditsAPI(movieId);
+        const { cast } = await getMovieDataByType(movieId, "credits");
+
         setCredits(cast);
       } catch (error) {
         console.log(error);
