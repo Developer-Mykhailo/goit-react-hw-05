@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { getMovieByQueryAPI } from "../service/moviedbAPI";
+import { getMovieByQueryAPI } from "../../service/moviedbAPI";
 import { Link } from "react-router-dom";
+import s from "./MoviesPage.module.css";
+import Container from "../../components/Container/Container";
 
 const MoviesPage = () => {
   const [inputValue, setInputValue] = useState("");
@@ -10,7 +12,7 @@ const MoviesPage = () => {
   //hendlers
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) return setInputValue("");
     try {
       const { results } = await getMovieByQueryAPI(inputValue);
       setMovieByQuery(results);
@@ -22,8 +24,8 @@ const MoviesPage = () => {
 
   //JSX
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <Container>
+      <form className={s.form} onSubmit={handleSubmit}>
         <input
           onChange={(e) => setInputValue(e.target.value)}
           type="text"
@@ -36,7 +38,7 @@ const MoviesPage = () => {
       </form>
 
       {movieByQuery.length > 0 ? (
-        <ul>
+        <ul className={s.list}>
           {movieByQuery.map((movie) => (
             <li key={movie.id}>
               <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
@@ -46,7 +48,7 @@ const MoviesPage = () => {
       ) : (
         <p>Type somthing</p>
       )}
-    </div>
+    </Container>
   );
 };
 
