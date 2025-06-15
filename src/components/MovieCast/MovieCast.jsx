@@ -27,7 +27,11 @@ const MovieCast = () => {
           <li key={id}>
             <div className={s.img_wrap}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                src={
+                  profile_path !== null
+                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                    : "https://placehold.co/180x270?text=photo missing"
+                }
                 alt={original_name}
               />
             </div>

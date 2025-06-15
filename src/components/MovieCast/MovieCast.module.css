@@ -1,8 +1,9 @@
 .character_list li {
-  width: 180px;
   margin-bottom: 16px;
 }
 
 .img_wrap img {
   margin-bottom: 4px;
+  width: 180px;
+  height: 270px;
 }

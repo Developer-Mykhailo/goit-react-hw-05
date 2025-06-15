@@ -25,3 +25,13 @@
   font-size: 18px;
   font-weight: 500;
 }
+
+.more_info {
+  padding: 15px 0;
+  border-bottom: 2px solid #888;
+  margin-bottom: 20px;
+}
+
+.more_info ul li:first-child {
+  margin-bottom: 10px;
+}

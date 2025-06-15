@@ -15,7 +15,6 @@ const MovieReviews = () => {
       try {
         const { results } = await getMovieReviewsAPI(movieId);
         setReviews(results);
-        console.log(results);
       } catch (error) {
         console.log(error);
       }
@@ -25,16 +24,20 @@ const MovieReviews = () => {
 
   //JSX
   return (
-    <div>
-      <ul className={s.reviews_list}>
-        {reviews.map((review) => (
-          <li key={review.id}>
-            <p className={s.author}>Author: {review.author}</p>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {reviews.length !== 0 ? (
+        <ul className={s.reviews_list}>
+          {reviews.map(({ author, id, content }) => (
+            <li key={id}>
+              <p className={s.author}>Author: {author}</p>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>We don't have any reviews for this movie</p>
+      )}
+    </>
   );
 };
 

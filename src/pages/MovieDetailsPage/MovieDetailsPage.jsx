@@ -34,7 +34,11 @@ const MovieDetailsPage = () => {
       <div className={s.movie_container}>
         <div className={s.img_wrap}>
           <img
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            src={
+              poster_path !== null
+                ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                : "https://placehold.co/180x270?text=photo missing"
+            }
             alt={title}
           />
         </div>
@@ -51,14 +55,16 @@ const MovieDetailsPage = () => {
         </div>
       </div>
 
-      <ul>
-        <li>
-          <Link to={"cast"}>Cast</Link>
-        </li>
-        <li>
-          <Link to={"reviews"}>Reviews</Link>
-        </li>
-      </ul>
+      <div className={s.more_info}>
+        <ul>
+          <li>
+            <Link to={"cast"}>Cast</Link>
+          </li>
+          <li>
+            <Link to={"reviews"}>Reviews</Link>
+          </li>
+        </ul>
+      </div>
       <Outlet />
     </Container>
   );
