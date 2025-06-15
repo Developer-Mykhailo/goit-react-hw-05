@@ -1,5 +1,3 @@
-// import React from 'react'
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,10 +5,14 @@ const NotFoundPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       navigate("/");
     }, 3000);
-  });
+
+    return () => clearTimeout(timeoutId);
+  }, [navigate]);
+
+  //jsx
   return (
     <div>
       <h2>Page is not found</h2>
