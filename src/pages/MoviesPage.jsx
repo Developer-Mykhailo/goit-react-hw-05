@@ -11,14 +11,12 @@ const MoviesPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-
     try {
       const { results } = await getMovieByQueryAPI(inputValue);
       setMovieByQuery(results);
     } catch (error) {
       console.log("Search failed:", error);
     }
-
     setInputValue("");
   };
 
@@ -29,6 +27,9 @@ const MoviesPage = () => {
         <input
           onChange={(e) => setInputValue(e.target.value)}
           type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movie"
           value={inputValue}
         />
         <button type="submit">Search</button>

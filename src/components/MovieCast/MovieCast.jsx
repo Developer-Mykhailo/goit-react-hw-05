@@ -23,24 +23,28 @@ const MovieCast = () => {
   //jsx
   return (
     <div>
-      <ul className={s.character_list}>
-        {credits.map(({ character, id, profile_path, original_name }) => (
-          <li key={id}>
-            <div className={s.img_wrap}>
-              <img
-                src={
-                  profile_path !== null
-                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                    : "https://placehold.co/180x270?text=photo missing"
-                }
-                alt={original_name}
-              />
-            </div>
-            <p>{original_name}</p>
-            <p>Character: {character}</p>
-          </li>
-        ))}
-      </ul>
+      {credits.length !== 0 ? (
+        <ul className={s.character_list}>
+          {credits.map(({ character, id, profile_path, original_name }) => (
+            <li key={id}>
+              <div className={s.img_wrap}>
+                <img
+                  src={
+                    profile_path !== null
+                      ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                      : "https://placehold.co/180x270?text=photo missing"
+                  }
+                  alt={original_name}
+                />
+              </div>
+              <p>{original_name}</p>
+              <p>Character: {character}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No cast information</p>
+      )}
     </div>
   );
 };
