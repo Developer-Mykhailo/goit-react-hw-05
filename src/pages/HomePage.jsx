@@ -5,18 +5,16 @@ import { getMovieAPI } from "../service/moviedbAPI";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  //
+
   useEffect(() => {
     const getMovie = async () => {
       try {
         const { results } = await getMovieAPI();
-
         setMovies(results);
       } catch (error) {
         console.log(error);
       }
     };
-
     getMovie();
   }, []);
 
