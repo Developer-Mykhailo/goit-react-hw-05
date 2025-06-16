@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { getMovieByQueryAPI } from "../../service/moviedbAPI";
-import { Link } from "react-router-dom";
 import s from "./MoviesPage.module.css";
 import Container from "../../components/Container/Container";
+import MovieList from "../../components/MovieList/MovieList";
 
 const MoviesPage = () => {
   const [inputValue, setInputValue] = useState("");
@@ -36,18 +36,7 @@ const MoviesPage = () => {
         />
         <button type="submit">Search</button>
       </form>
-
-      {movieByQuery.length > 0 ? (
-        <ul className={s.list}>
-          {movieByQuery.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Type something</p>
-      )}
+      <MovieList movies={movieByQuery} />
     </Container>
   );
 };

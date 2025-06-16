@@ -5,7 +5,7 @@ import MovieReviews from "./components/MovieReviews/MovieReviews";
 import Navigation from "./components/Navigation/Navigation";
 import { lazy, Suspense } from "react";
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const HomePage = lazy(() => import("./pages/HomePage"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>
   import("./pages/MovieDetailsPage/MovieDetailsPage")
