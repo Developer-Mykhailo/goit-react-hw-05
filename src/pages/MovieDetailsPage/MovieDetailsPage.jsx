@@ -1,5 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { getMovieDataByTypeAPI } from "../../service/moviedbAPI";
 import Container from "../../components/Container/Container";
 import s from "./MovieDetailsPage.module.css";
@@ -8,6 +14,8 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
+  const location = useLocation();
+  const backLinkRef = useRef(location.state);
 
   //
   useEffect(() => {
@@ -30,7 +38,7 @@ const MovieDetailsPage = () => {
 
   return (
     <Container>
-      <Link className={s.link_back} to="/">
+      <Link className={s.link_back} to={backLinkRef.current}>
         Go back
       </Link>
 
